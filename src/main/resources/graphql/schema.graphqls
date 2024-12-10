@@ -1,0 +1,30 @@
+# Query type to fetch reservations
+type Query {
+    allReservations: [Reservation!]!
+    reservationById(id: ID!): Reservation
+    reservationsByClient(client: String!): [Reservation!]
+}
+
+# Mutation type to manage reservations
+type Mutation {
+    saveReservation(reservation: ReservationInput!): Reservation
+}
+
+# Reservation type representing the reservation data
+type Reservation {
+    id: ID!
+    client: String!
+    chambre: Int!
+    dateDebut: String!
+    dateFin: String!
+    preference: String
+}
+
+# Input type for creating or updating a reservation
+input ReservationInput {
+    client: String!
+    chambre: Int!
+    dateDebut: String!
+    dateFin: String!
+    preference: String
+}
